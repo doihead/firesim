@@ -148,6 +148,8 @@ class XilinxAlveoU200Config
 
 class XilinxAlveoU280Config extends XilinxAlveoU200Config
 
+class MellanoxInnova2Config extends XilinxAlveoU200Config
+
 class NitefuryConfig
     extends Config(new Config((_, _, _) => {
       case Platform                    => (p: Parameters) => new F1Shim()(p)
