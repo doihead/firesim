@@ -175,6 +175,11 @@ class XilinxAlveoU200Config
 
 class XilinxAlveoU280Config extends XilinxAlveoU200Config
 
+class CorigineXB10Config
+    extends Config(new Config((_, _, _) => {
+      case F1ShimHasQSFPPorts  => false
+    }) ++ new XilinxAlveoU250Config)
+
 class NitefuryConfig
     extends Config(new Config((_, _, _) => {
       case Platform                    => (p: Parameters) => new F1Shim()(p)
