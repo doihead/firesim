@@ -177,11 +177,25 @@ Config mirrors the reference project's `xb10.tcl` verbatim. Notable settings:
    side win on conflicts, so the override must be on the left of
    `new XilinxAlveoU250Config`.
 
-## Runtime deployment (not yet done)
+## Runtime deployment
 
-`firesim buildbitstream` works end-to-end. `firesim runworkload` does
-not yet — the `deploy/firesim` CLI has a literal `elif
-args.platform == ...` chain around line 187 that needs a branch for
-`corigine_xb10`, and there is no `CorigineXB10InstanceDeployManager`
-equivalent yet. This is a follow-up once a bitstream has been
-successfully programmed and brought up on real hardware.
+`firesim buildbitstream`, `firesim infrasetup`, and `firesim runworkload`
+are all wired up. The runtime side follows the u250 / u200 / u280
+pattern exactly:
+
+- `CorigineXB10InstanceDeployManager` in
+  `deploy/runtools/run_farm_deploy_managers.py` is a trivial subclass
+  of `XilinxAlveoInstanceDeployManager` that only overrides
+  `PLATFORM_NAME = "corigine_xb10"`. Everything else — `flash_fpgas`,
+  `load_xdma`, `change_pcie_perms`, `enumerate_fpgas`, `start_sim_slot` —
+  is inherited. This works because `platforms/corigine_xb10/scripts`
+  is a symlink to `../xilinx_alveo_u250/scripts` (so
+  `firesim-fpga-util.py`, `program_fpga.tcl`, etc. are shared
+  verbatim) and because the XB-10 BD is configured with
+  `pf0_device_id 903F`, matching the hardcoded `0x903f` used by the
+  simulator's `+pci-device` plusarg.
+- `deploy/firesim` registers `corigine_xb10` in both the managerinit
+  `elif` chain and the `deploy_manager_map` dict, so
+  `firesim managerinit --platform corigine_xb10` rewrites
+  `config_runtime.yaml` with `override_platform:
+  CorigineXB10InstanceDeployManager`.
