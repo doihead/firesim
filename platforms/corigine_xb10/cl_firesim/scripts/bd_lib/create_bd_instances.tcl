@@ -70,6 +70,7 @@ set_property -dict [list \
    CONFIG.axilite_master_en {true} \
    CONFIG.axilite_master_size {64} \
    CONFIG.axilite_master_scale {Kilobytes} \
+   CONFIG.barlite2 {4} \
    CONFIG.axist_bypass_en {false} \
    CONFIG.pciebar2axibar_axil_master {0xC0000000} \
    CONFIG.xdma_axi_intf_mm {AXI_Memory_Mapped} \
