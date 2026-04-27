@@ -1353,6 +1353,11 @@ class CorigineXB10InstanceDeployManager(XilinxAlveoInstanceDeployManager):
         super().__init__(parent_node)
         self.PLATFORM_NAME = "corigine_xb10"
 
+    def flash_fpgas(self) -> None:
+        # TODO: temporary workaround — hw_server wedges between back-to-back program_fpga.tcl calls. Debug and remove.
+        if self.instance_assigned_simulations():
+            self.instance_logger("Skipping flash_fpgas — XB-10 boards assumed pre-programmed.")
+
 
 class RHSResearchNitefuryIIInstanceDeployManager(XilinxAlveoInstanceDeployManager):
     def __init__(self, parent_node: Inst) -> None:
