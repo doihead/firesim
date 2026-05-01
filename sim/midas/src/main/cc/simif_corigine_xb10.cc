@@ -52,7 +52,7 @@ private:
   int edma_write_fd;
   int edma_read_fd;
   void *bar0_base;
-  uint32_t bar0_size = 0x10000; // 64 KB (matches XB-10 BD axilite_master_size; PEX 8747 bridge window caps at 1 MB)
+  uint32_t bar0_size = 0x2000000; // 32 MB (matches u250 axilite_master_size)
 };
 
 static int fpga_pci_check_file_id(char *path, uint16_t id) {
