@@ -125,7 +125,9 @@ class BaseXilinxAlveoU280Config
 
 class BaseCorigineXB10Config
     extends Config(
-      new WithDefaultMemModel ++
+      // Corigine XB-10 only has 8GB of onboard DRAM
+      new WithDramOrganization(maxRanks = 4, maxBanks = 8, dramSize = BigInt(1) << 33) ++
+        new WithDefaultMemModel ++
         new WithWiringTransform ++
         new WithAsyncResetReplacement ++
         new midas.CorigineXB10Config
