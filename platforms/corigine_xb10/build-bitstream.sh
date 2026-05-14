@@ -72,4 +72,8 @@ fi
 
 # run build
 cd $CL_DIR
-vivado -mode batch -source $CL_DIR/scripts/main.tcl -tclargs $FREQUENCY $STRATEGY $BOARD
+# -stack 2000: bump per-thread Tcl interpreter stack from the default ~256 KB
+# to 2 MB. Required to keep synth_design from hitting `[Synth 8-7098] Stack
+# limit reached` during LSU/FSM inference on large BOOM designs. Propagates
+# to vivado processes spawned by launch_runs.
+vivado -stack 2000 -mode batch -source $CL_DIR/scripts/main.tcl -tclargs $FREQUENCY $STRATEGY $BOARD
