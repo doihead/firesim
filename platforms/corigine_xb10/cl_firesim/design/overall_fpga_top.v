@@ -41,7 +41,7 @@ module overall_fpga_top(
     `define AMBA_AXI_QOS
     `define AMBA_AXI_REGION
     `define AMBA_AXI_ID
-    `AMBA_AXI_WIRE(DDR4_0_S_AXI, 16, 34, 64)
+    `AMBA_AXI_WIRE(DDR4_0_S_AXI, 16, 33, 64)
     `undef AMBA_AXI4
     `undef AMBA_AXI_CACHE
     `undef AMBA_AXI_PROT

@@ -36,7 +36,7 @@ set DDR4_0_S_AXI [ create_bd_intf_port -mode Slave -vlnv xilinx.com:interface:ax
 # AXI ID into design_1 — leaving ID_WIDTH unset lets BD auto-propagate it
 # from the connected axi_dwidth_converter_0/S_AXI (SI_ID_WIDTH=16).
 set_property -dict [ list \
-   CONFIG.ADDR_WIDTH {32} \
+   CONFIG.ADDR_WIDTH {33} \
    CONFIG.ARUSER_WIDTH {0} \
    CONFIG.AWUSER_WIDTH {0} \
    CONFIG.BUSER_WIDTH {0} \
