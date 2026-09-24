@@ -1440,7 +1440,7 @@ class CorigineXB10InstanceDeployManager(XilinxAlveoInstanceDeployManager):
         json_db = self.parent_node.get_fpga_db()
 
         with cd(remote_sim_dir):
-            cmd = f"{script_path}/firesim-generate-fpga-db-v2.py"
+            cmd = f"{script_path}/firesim-generate-fpga-db.py"
             check_script(
                 cmd,
                 Path(f"{get_deploy_dir()}/../platforms/{self.PLATFORM_NAME}/scripts"),

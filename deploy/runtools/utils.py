@@ -91,7 +91,7 @@ def get_local_shared_libraries(elf: str) -> List[Tuple[str, str]]:
                 dso.path
             ), f"dynamic linker is only allowed no soname, not: {dso}"
             continue
-        if "linux-vdso.so" in dso.soname:
+        if "linux-vdso.so" in dso.soname or "libc.so.6" in dso.soname:
             continue
         assert (
             dso.path is not None
