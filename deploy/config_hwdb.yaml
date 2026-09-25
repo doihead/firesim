@@ -1,0 +1,29 @@
+# Hardware config database for FireSim Simulation Manager
+# See https://docs.fires.im/en/stable/Advanced-Usage/Manager/Manager-Configuration-Files.html for documentation of all of these params.
+
+# Hardware configs represent a combination of:
+#   - an agfi/bitstream_tar with the bitstream for an fpga
+#   - (optional) a deployquintuplet override
+#   - (optional) a deploy_makefrag_override
+#   - (optional) a custom_runtime_config
+
+# The HWDBs (and their AGFI's/bitstream_tar's) provided below are public and available to all users.
+
+# DOCREF START: Example HWDB Entry
+midasexamples_gcd:
+    bitstream_tar: https://raw.githubusercontent.com/invalid/address.tar.gz
+    deploy_quintuplet_override: null
+    deploy_makefrag_override: null
+    custom_runtime_config: null
+# DOCREF END: Example HWDB Entry
+
+corigine_xb10_firesim_rocket_singlecore_no_nic:
+    bitstream_tar: file:///tools/C/eygao/xb10-bitstreams/corigine_xb10_firesim_rocket_singlecore_no_nic.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
+
+
+corigine_xb10_firesim_iris_tethered_bringup_nocflush:
+    bitstream_tar: file:///tools/C/eygao/xb10-bitstreams/origine_xb10-firesim-FireSim-IrisFiresimNOCflushCombinedConfig.tar.gz
+    deploy_quintuplet_override: null
+    custom_runtime_config: null
